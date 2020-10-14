@@ -1,0 +1,3892 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "GTMOrderService",
+    "description": "APIs for Cloud Solution Provider partners that manage orders and carts",
+    "version": "v1"
+  },
+  "host": "api.partnercenter.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v{version}/customers/{customer_id}/carts": {
+      "post": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Creates a new cart.",
+        "operationId": "Post /v{version}/customers/{customer_id}/carts",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "name": "cart",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.Cart"
+            },
+            "description": "The cart."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The request was successful. The response body contains the cart information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.Cart"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/carts/{cart_id}": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Gets a specific cart using a unique identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/carts/{cart_id}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "cart_id",
+            "in": "path",
+            "required": true,
+            "description": "The cart identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the cart information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.Cart"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Updates an existing cart.",
+        "operationId": "Put /v{version}/customers/{customer_id}/carts/{cart_id}",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "cart_id",
+            "in": "path",
+            "required": true,
+            "description": "The cart identifier."
+          },
+          {
+            "name": "cart",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.Cart"
+            },
+            "description": "The cart with updated information."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "The request was successful. The response body contains the cart information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.Cart"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/carts/{cart_id}/checkout": {
+      "post": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Checks out an existing cart.",
+        "operationId": "Post /v{version}/customers/{customer_id}/carts/{cart_id}/checkout",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "cart_id",
+            "in": "path",
+            "required": true,
+            "description": "The cart identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "The request was successful. The response body contains the order result information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartCheckoutResult"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/orders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Gets a collection of order for specified customer and an indirect reseller partner.",
+        "operationId": "Get /v{version}/customers/{customer_id}/orders?indirect_reseller_id={indirect_reseller_id_value}&billingType={billingType_value}&include_price={include_price_value}&include_system_purchases={include_system_purchases_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "indirect_reseller_id",
+            "in": "query",
+            "description": "The indirect reseller Id."
+          },
+          {
+            "type": "integer",
+            "name": "billingType",
+            "in": "query",
+            "enum": [
+              "unknown",
+              "monthly",
+              "annual",
+              "none",
+              "one_time"
+            ],
+            "format": "int32"
+          },
+          {
+            "type": "boolean",
+            "name": "include_price",
+            "in": "query",
+            "description": "Whether to include price in the response (Default : false)."
+          },
+          {
+            "type": "boolean",
+            "name": "include_system_purchases",
+            "in": "query",
+            "description": "Whether to include system created purchases (Default : false)."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the orders.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.Order]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Creates a new order.",
+        "operationId": "Post /v{version}/customers/{customer_id}/orders",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "name": "newOrder",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+            },
+            "description": "The new order."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The request was successful. The response body contains the new order created.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/orders/{order_id}": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Gets a specific order using a unique identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/orders/{order_id}?include_price={include_price_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "description": "The order identifier."
+          },
+          {
+            "type": "boolean",
+            "name": "include_price",
+            "in": "query",
+            "description": "Whether to include price in the response."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the order information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Updates an existing order.",
+        "operationId": "Patch /v{version}/customers/{customer_id}/orders/{order_id}",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "description": "The order Id."
+          },
+          {
+            "name": "updatedOrder",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+            },
+            "description": "The order with updates."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the updated order.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/orders/{order_id}/provisioningstatus": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Gets a collection of order line item provisioning status for an order.",
+        "operationId": "Get /v{version}/customers/{customer_id}/orders/{order_id}/provisioningstatus",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "description": "The order Id."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the a collection of provisioning status.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemProvisioningStatus]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/orders/{order_id}/activationlinks": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Gets the collection of activation links for an order.",
+        "operationId": "Get /v{version}/customers/{customer_id}/orders/{order_id}/activationlinks",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "description": "The order Id."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the a collection of activationl links.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/orders/{order_id}/lineitems/{line_item_number}/activationlinks": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Gets the activation links from the specific line item of the order.",
+        "operationId": "Get /v{version}/customers/{customer_id}/orders/{order_id}/lineitems/{line_item_number}/activationlinks",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer identifier."
+          },
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "description": "The order Id."
+          },
+          {
+            "type": "integer",
+            "name": "line_item_number",
+            "in": "path",
+            "required": true,
+            "description": "The line item number.",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the activation links.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/productUpgrades/eligibility": {
+      "post": {
+        "tags": [
+          "ProductUpgrades"
+        ],
+        "summary": "Retrieves the eligibility for product upgrades.",
+        "operationId": "Post /v{version}/productUpgrades/eligibility",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "productUpgradesRequest",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesRequest"
+            },
+            "description": "Product upgrades request body."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the eligibility information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesEligibility"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/productUpgrades": {
+      "post": {
+        "tags": [
+          "ProductUpgrades"
+        ],
+        "summary": "Creates a product upgrade entity to upgrade the customer from legacy azure subscriptions to azure plans.",
+        "operationId": "Post /v{version}/productUpgrades",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "productUpgradesRequest",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesRequest"
+            },
+            "description": "Product upgrades request body."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "The request was successful. The response body contains the location header with link to upgrade information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesStatus"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/productUpgrades/{upgradeId}": {
+      "post": {
+        "tags": [
+          "ProductUpgrades"
+        ],
+        "summary": "Retrieves the status of product upgrade operation for the customer from legacy azure subscriptions to azure plans.",
+        "operationId": "Post /v{version}/productUpgrades/{upgradeId}",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "upgradeId",
+            "in": "path",
+            "required": true,
+            "description": "Upgrade Id."
+          },
+          {
+            "name": "productUpgradesRequest",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesRequest"
+            },
+            "description": "Product upgrades request body."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The request was successful. The response body contains the upgrade information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesStatus"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieves all subscriptions for the customer of a partner by their active directory tenant identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions?order_id={order_id_value}&mpn_id={mpn_id_value}&include_allbehaviors={include_allbehaviors_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "query",
+            "description": "The order identifier. Optional parameter. Filter subscriptions by 'order id'. This parameter cannot be combined with 'partner id'."
+          },
+          {
+            "type": "string",
+            "name": "mpn_id",
+            "in": "query",
+            "description": "The partner identifier (mpn). Optional parameter. Filter subscriptions by 'partner id'. This parameter cannot be combined with 'order id'."
+          },
+          {
+            "type": "boolean",
+            "name": "include_allbehaviors",
+            "in": "query",
+            "description": "Include all behavior assets (by default only future billing assets are returned)."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the subscriptions.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieves a subscription by identifier for the customer of a partner by their active directory tenant identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions/{subscription_id}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the subscription information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Updates a subscription by identifier for the customer of a partner by their active directory tenant identifier.",
+        "operationId": "Patch /v{version}/customers/{customer_id}/subscriptions/{subscription_id}",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "name": "subscription",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription"
+            },
+            "description": "The subscription data."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the updated subscription information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription"
+            }
+          },
+          "202": {
+            "description": "The request was successful. The update subscription request has been accepted."
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/History": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieves subscription's transaction history by identifier for the customer of a partner by their active directory tenant identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/History",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the subscription's transaction history information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/provisioningstatus": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Get subscription provisioning status.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/provisioningstatus",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "Customer tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "Subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful.  The requested customer's subscription provisioning status is returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionProvisioningStatus"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/activationlinks": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Get subscription activation links.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/activationlinks",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "Customer tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "Subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the subscriptions.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/addons": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieves all add-on subscriptions of a subscription for the customer of a partner by their active directory tenant identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/addons",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the requested add-on subscription information.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/activate": {
+      "post": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Activates 3rd Party MCAPI SaaS Subscriptions.",
+        "operationId": "Post /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/activate",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionActivationResult"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/registrations": {
+      "post": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Register an existing subscription for RI purchase.",
+        "operationId": "Post /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/registrations",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "Customer tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "202": {
+            "description": "The request was successfully accepted. The link to query the registration status is returned in the response body.",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/registrationstatus": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieves a subscription registration status by identifier for the customer of a partner by their active directory tenant identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/registrationstatus",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "customer tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful.  The requested customer's subscription registration status is returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionRegistrationStatus"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customer_id}/subscriptions/{subscription_id}/azureEntitlements": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieves the list of entitlements of a subscription identifier for the customer of a partner by their active directory tenant identifier.",
+        "operationId": "Get /v{version}/customers/{customer_id}/subscriptions/{subscription_id}/azureEntitlements",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "string",
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "description": "The subscription identifier."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the entitlement identifier.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Subscriptions.V1.Models.AzureEntitlement]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Microsoft.Partner.ServiceFabric.WebApi.Modals.AvailabilityResponse": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Modals.AvailabilityResponse",
+      "properties": {
+        "webApiContext": {
+          "$ref": "#/definitions/Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext"
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext",
+      "properties": {
+        "servicePath": {
+          "type": "string",
+          "readonly": true
+        },
+        "appVersion": {
+          "type": "string",
+          "readonly": true
+        },
+        "serviceFabricPort": {
+          "type": "string",
+          "readonly": true
+        },
+        "reverseProxyUrl": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.Cart": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.Cart",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "creationTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expirationTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedUser": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartLineItem"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.CartLineItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.CartLineItem",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "catalogItemId": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "termDuration": {
+          "type": "string"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[Microsoft.Partner.Services.Carts.V1.Models.ParticipantType,System.String]"
+          }
+        },
+        "provisioningContext": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "orderGroup": {
+          "type": "string"
+        },
+        "addonItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartLineItem"
+          }
+        },
+        "renewsTo": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.RenewsTo"
+        },
+        "error": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartError"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceLinks",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceAttributes": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceAttributes",
+      "properties": {
+        "etag": {
+          "type": "string"
+        },
+        "objectType": {
+          "type": "string"
+        }
+      }
+    },
+    "System.Collections.Generic.KeyValuePair[Microsoft.Partner.Services.Carts.V1.Models.ParticipantType,System.String]": {
+      "type": "object",
+      "x-typeName": "System.Collections.Generic.KeyValuePair[Microsoft.Partner.Services.Carts.V1.Models.ParticipantType,System.String]",
+      "properties": {
+        "key": {
+          "type": "integer",
+          "readonly": true,
+          "enum": [
+            "unknown",
+            "transaction_reseller",
+            "consumption_reseller"
+          ],
+          "format": "int32"
+        },
+        "value": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.RenewsTo": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.RenewsTo",
+      "properties": {
+        "termDuration": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.CartError": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.CartError",
+      "properties": {
+        "errorCode": {
+          "type": "integer",
+          "enum": [
+            0,
+            10000,
+            10002,
+            10003,
+            10004,
+            10006,
+            10007,
+            10008,
+            10009,
+            10010,
+            10011,
+            400019,
+            400041
+          ],
+          "format": "int32"
+        },
+        "errorDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.Link": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.Link",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "readonly": true
+        },
+        "method": {
+          "type": "string",
+          "readonly": true
+        },
+        "body": {
+          "type": "string",
+          "readonly": true
+        },
+        "headers": {
+          "type": "array",
+          "readonly": true,
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[System.String,System.String]"
+          }
+        }
+      }
+    },
+    "System.Collections.Generic.KeyValuePair[System.String,System.String]": {
+      "type": "object",
+      "x-typeName": "System.Collections.Generic.KeyValuePair[System.String,System.String]",
+      "properties": {
+        "key": {
+          "type": "string",
+          "readonly": true
+        },
+        "value": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.CartCheckoutResult": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.CartCheckoutResult",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+          }
+        },
+        "orderErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.OrderError"
+          }
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.Order": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.Order",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "alternateId": {
+          "type": "string"
+        },
+        "referenceCustomerId": {
+          "type": "string"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "currencySymbol": {
+          "type": "string"
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.OrderLineItem"
+          }
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "completed",
+            "pending",
+            "cancelled",
+            "partial_success",
+            "error"
+          ],
+          "format": "int32"
+        },
+        "transactionType": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.OrderLinks"
+        },
+        "totalPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "client": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.ClientContext"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.OrderError": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.OrderError",
+      "properties": {
+        "orderGroupId": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItem",
+      "properties": {
+        "lineItemNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "provisioningContext": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "offerId": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "parentSubscriptionId": {
+          "type": "string"
+        },
+        "termDuration": {
+          "type": "string"
+        },
+        "transactionType": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pricing": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Pricing"
+        },
+        "partnerIdOnRecord": {
+          "type": "string"
+        },
+        "renewsTo": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.RenewsTo"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemLinks"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.OrderLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.OrderLinks",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "provisioningStatus": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "patchOperation": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.ClientContext": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.ClientContext",
+      "properties": {
+        "marketplaceCountry": {
+          "type": "string"
+        },
+        "deviceFamily": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.Pricing": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.Pricing",
+      "properties": {
+        "listPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "discountedPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "proratedPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "extendedPrice": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.RenewsTo": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.RenewsTo",
+      "properties": {
+        "termDuration": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemLinks",
+      "properties": {
+        "subscription": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "product": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "sku": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "availability": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "provisioningStatus": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "activationLinks": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.CartWithInternalData": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.CartWithInternalData",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "creationTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedUser": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartLineItemWithInternalData"
+          }
+        },
+        "expirationTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.CartLineItemWithInternalData": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.CartLineItemWithInternalData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "catalogItemId": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[Microsoft.Partner.Services.Carts.V1.Models.ParticipantType,System.String]"
+          }
+        },
+        "provisioningContext": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "addonItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartLineItemWithInternalData"
+          }
+        },
+        "error": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartError"
+        },
+        "orderGroup": {
+          "type": "string"
+        },
+        "purchaseSystem": {
+          "type": "string"
+        },
+        "audienceClaimHeader": {
+          "type": "string"
+        },
+        "targetId": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.Order]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.Order]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readonly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readonly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemProvisioningStatus]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemProvisioningStatus]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readonly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readonly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemProvisioningStatus"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemProvisioningStatus": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemProvisioningStatus",
+      "properties": {
+        "orderLineItemId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "lineItemNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string"
+        },
+        "quantityProvisioningInformation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.QuantityProvisioningStatus"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.QuantityProvisioningStatus": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.QuantityProvisioningStatus",
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readonly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readonly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Orders.V2.Models.OrderLineItemActivationLink",
+      "properties": {
+        "lineItemNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "link": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesRequest": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesRequest",
+      "properties": {
+        "customerId": {
+          "type": "string"
+        },
+        "productFamily": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesEligibility": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesEligibility",
+      "properties": {
+        "customerId": {
+          "type": "string"
+        },
+        "isEligible": {
+          "type": "boolean"
+        },
+        "upgradeId": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "productFamily": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesStatus": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.ProductUpgradesStatus",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "productFamily": {
+          "type": "string"
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.UpgradesLineItem"
+          }
+        },
+        "errorDetails": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ErrorDetails"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.UpgradesLineItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.UpgradesLineItem",
+      "properties": {
+        "sourceProduct": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.UpgradeProduct"
+        },
+        "targetProduct": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.UpgradeProduct"
+        },
+        "upgradedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string"
+        },
+        "errorDetails": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.ErrorDetails"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.ErrorDetails": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.ErrorDetails",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.UpgradeProduct": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.UpgradeProduct",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readonly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readonly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.Subscription",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "offerId": {
+          "type": "string"
+        },
+        "entitlementId": {
+          "type": "string"
+        },
+        "offerName": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unitType": {
+          "type": "string"
+        },
+        "parentSubscriptionId": {
+          "type": "string"
+        },
+        "hasPurchasableAddons": {
+          "type": "boolean"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "effectiveStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "commitmentEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "active",
+            "suspended",
+            "deleted"
+          ],
+          "format": "int32"
+        },
+        "autoRenewEnabled": {
+          "type": "boolean"
+        },
+        "isTrial": {
+          "type": "boolean"
+        },
+        "billingType": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "usage",
+            "license"
+          ],
+          "format": "int32"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "termDuration": {
+          "type": "string"
+        },
+        "renewalTermDuration": {
+          "type": "string"
+        },
+        "refundOptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.RefundOption"
+          }
+        },
+        "isMicrosoftProduct": {
+          "type": "boolean"
+        },
+        "partnerId": {
+          "type": "string"
+        },
+        "suspensionReasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "attentionNeeded": {
+          "type": "boolean"
+        },
+        "attentionReason": {
+          "type": "string"
+        },
+        "actionTaken": {
+          "type": "boolean"
+        },
+        "contractType": {
+          "type": "integer",
+          "readonly": true,
+          "enum": [
+            "subscription",
+            "product_key",
+            "redemption_code"
+          ],
+          "format": "int32"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionLinks"
+        },
+        "publisherName": {
+          "type": "string"
+        },
+        "orderId": {
+          "type": "string"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.RefundOption": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.RefundOption",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionLinks",
+      "properties": {
+        "offer": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "entitlement": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "parentSubscription": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "product": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "sku": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "availability": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "pendingChanges": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "activationLinks": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionHistory": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionHistory",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "alternateId": {
+          "type": "string"
+        },
+        "transactionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionType": {
+          "type": "string"
+        },
+        "lineItemId": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "transactionPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionProvisioningStatus": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionProvisioningStatus",
+      "properties": {
+        "skuId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionActivationResult": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionActivationResult",
+      "properties": {
+        "subscriptionId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionRegistrationStatus": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.SubscriptionRegistrationStatus",
+      "properties": {
+        "subscriptionId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Subscriptions.V1.Models.AzureEntitlement]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Subscriptions.V1.Models.AzureEntitlement]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readonly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readonly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Subscriptions.V1.Models.AzureEntitlement"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Subscriptions.V1.Models.AzureEntitlement": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Subscriptions.V1.Models.AzureEntitlement",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.TransferEntity": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.TransferEntity",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "createdTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expirationTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerTenantId": {
+          "type": "string"
+        },
+        "partnertenantid": {
+          "type": "string"
+        },
+        "sourcePartnerName": {
+          "type": "string"
+        },
+        "sourcePartnerTenantId": {
+          "type": "string"
+        },
+        "targetPartnerName": {
+          "type": "string"
+        },
+        "targetPartnerTenantId": {
+          "type": "string"
+        },
+        "lastModifiedUser": {
+          "type": "string"
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.TransferLineItem"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.TransferLineItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.TransferLineItem",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "offerId": {
+          "type": "string"
+        },
+        "orderId": {
+          "type": "string"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "partnerIdOnRecord": {
+          "type": "string"
+        },
+        "transferGroupId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "billingDetails": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.LastKnownBillingDetails"
+        },
+        "addonItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.TransferLineItem"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.LastKnownBillingDetails": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.LastKnownBillingDetails",
+      "properties": {
+        "billingType": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "usage",
+            "license"
+          ],
+          "format": "int32"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "billingPeriod": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.LastKnownBillingPeriod"
+        },
+        "billingAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.LastKnownBillingPeriod": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.LastKnownBillingPeriod",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.TransferSubmitResult": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.TransferSubmitResult",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Orders.V2.Models.Order"
+          }
+        },
+        "transferErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Transfers.V2.Models.TransferError"
+          }
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.TransferError": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.TransferError",
+      "properties": {
+        "transferGroupId": {
+          "type": "string"
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Providers.Transfer.V2.Models.TransferLineItem"
+          }
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "attributes": {
+          "readonly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Providers.Transfer.V2.Models.TransferLineItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Providers.Transfer.V2.Models.TransferLineItem",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "entitlementId": {
+          "type": "string"
+        },
+        "offerId": {
+          "type": "string"
+        },
+        "orderId": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "transferGroupId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "billingDetails": {
+          "$ref": "#/definitions/Microsoft.Partner.Providers.Transfer.V2.Models.LastKnownBillingDetails"
+        },
+        "addonItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Providers.Transfer.V2.Models.TransferLineItem"
+          }
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "partnerIdOnRecord": {
+          "type": "string"
+        },
+        "parentSubscriptionId": {
+          "type": "string"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        }
+      }
+    },
+    "Microsoft.Partner.Providers.Transfer.V2.Models.LastKnownBillingDetails": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Providers.Transfer.V2.Models.LastKnownBillingDetails",
+      "properties": {
+        "billingType": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "usage",
+            "license"
+          ],
+          "format": "int32"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "billingPeriod": {
+          "$ref": "#/definitions/Microsoft.Partner.Providers.Transfer.V2.Models.LastKnownBillingPeriod"
+        },
+        "billingAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Providers.Transfer.V2.Models.LastKnownBillingPeriod": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Providers.Transfer.V2.Models.LastKnownBillingPeriod",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Transfers.V2.Models.TransferEligibility": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Transfers.V2.Models.TransferEligibility",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "isEligible": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "transferStatus": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {},
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "description": "Authorization Bearer token",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "ms-correlationid": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request",
+      "name": "ms-correlationid",
+      "in": "header"
+    },
+    "ms-cv": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request",
+      "name": "ms-cv",
+      "in": "header"
+    },
+    "ms-requestid": {
+      "type": "apiKey",
+      "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request",
+      "name": "ms-requestid",
+      "in": "header"
+    }
+  }
+}

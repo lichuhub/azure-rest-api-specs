@@ -1,0 +1,1626 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "BillingService",
+    "description": "API's for querying Partner Center billing information",
+    "version": "v1"
+  },
+  "host": "api.partnercenter.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/customers/{customer_id}/servicecosts/{billing_period}": {
+      "get": {
+        "tags": [
+          "CustomerServiceCosts"
+        ],
+        "summary": "Retrieves the Service costs incurred by the customer's subscriptions",
+        "operationId": "Get /v1/customers/{customer_id}/servicecosts/{billing_period}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "integer",
+            "name": "billing_period",
+            "in": "path",
+            "required": true,
+            "enum": [
+              "none",
+              "most_recent",
+              "current"
+            ],
+            "description": "The billing period for which the service costs are being queried for.  Currently \"MostRecent\" is only supported",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the requested customer service costs.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Billing.V1.Models.ServiceCostsSummary"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/customers/{customer_id}/servicecosts/{billing_period}/lineitems": {
+      "get": {
+        "tags": [
+          "CustomerServiceCosts"
+        ],
+        "summary": "Retrieves the Service costs incurred by the customer's subscriptions",
+        "operationId": "Get /v1/customers/{customer_id}/servicecosts/{billing_period}/lineitems",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true,
+            "description": "The customer's active directory tenant identifier."
+          },
+          {
+            "type": "integer",
+            "name": "billing_period",
+            "in": "path",
+            "required": true,
+            "enum": [
+              "none",
+              "most_recent",
+              "current"
+            ],
+            "description": "The billing period for which the service costs are being queried for.  Currently \"MostRecent\" is only supported",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the requested customer service cost line items.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Collections.ResourceCollection[Microsoft.Partner.Services.Billing.V1.Models.ServiceCostLineItem]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/internal/invoices": {
+      "get": {
+        "tags": [
+          "InternalInvoice"
+        ],
+        "summary": "Gets the invoices for the partner.",
+        "operationId": "Get /v1/internal/invoices?partnerTenantId={partnerTenantId_value}&size={size_value}&offset={offset_value}&invoicetype={invoicetype_value}&filter.operator={filter.operator_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "partnerTenantId",
+            "in": "query",
+            "description": "The partner tenant id."
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "in": "query",
+            "description": "The page size.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "offset",
+            "in": "query",
+            "description": "The page offset.",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "invoicetype",
+            "in": "query",
+            "description": "The invoice type."
+          },
+          {
+            "type": "integer",
+            "name": "filter.operator",
+            "in": "query",
+            "enum": [
+              "equals",
+              "not_equals",
+              "greater_than",
+              "greater_than_or_equals",
+              "less_than",
+              "less_than_or_equals",
+              "substring",
+              "and",
+              "or",
+              "starts_with",
+              "not_starts_with"
+            ],
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded. The response body contains the collection of requested invoices.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Invoice"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/internal/invoices/{tenant_id}/{invoice_id}/documents/statement": {
+      "get": {
+        "tags": [
+          "InternalInvoice"
+        ],
+        "summary": "Gets the invoice statement as a PDF file.",
+        "operationId": "Get /v1/internal/invoices/{tenant_id}/{invoice_id}/documents/statement",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "tenant_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "invoice_id",
+            "in": "path",
+            "required": true,
+            "description": "The invoice identifier."
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the the invoice statement in PDF format."
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/internal/invoices/{invoice_id}/lineitems/{product_type}/{invoice_line_item_type}": {
+      "get": {
+        "tags": [
+          "InternalInvoice"
+        ],
+        "summary": "Gets invoice line items for a specific invoice by product and detail type.",
+        "operationId": "Get /v1/internal/invoices/{invoice_id}/lineitems/{product_type}/{invoice_line_item_type}?partnerTenantId={partnerTenantId_value}&seekOperation={seekOperation_value}&size={size_value}&offset={offset_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "partnerTenantId",
+            "in": "query",
+            "description": "The partner tenant id."
+          },
+          {
+            "type": "string",
+            "name": "invoice_id",
+            "in": "path",
+            "required": true,
+            "description": "The invoice identifier."
+          },
+          {
+            "type": "integer",
+            "name": "product_type",
+            "in": "path",
+            "required": true,
+            "enum": [
+              "none",
+              "office",
+              "azure",
+              "azure_data_market",
+              "one_time"
+            ],
+            "description": "The product type.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "invoice_line_item_type",
+            "in": "path",
+            "required": true,
+            "enum": [
+              "none",
+              "usage_line_items",
+              "billing_line_items"
+            ],
+            "description": "The invoice line item type.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "seekOperation",
+            "in": "query",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "description": "The seek operation to perform. Next is only supported.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "in": "query",
+            "description": "The page size.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "offset",
+            "in": "query",
+            "description": "The page offset.",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the requested invoice line items.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Collections.PagedResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.InvoiceLineItem]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/invoices": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Gets the invoices for the partner.",
+        "operationId": "Get /v1/invoices?size={size_value}&offset={offset_value}&invoicetype={invoicetype_value}&filter.operator={filter.operator_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "size",
+            "in": "query",
+            "description": "The page size.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "offset",
+            "in": "query",
+            "description": "The page offset.",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "invoicetype",
+            "in": "query",
+            "description": "The invoice type."
+          },
+          {
+            "type": "integer",
+            "name": "filter.operator",
+            "in": "query",
+            "enum": [
+              "equals",
+              "not_equals",
+              "greater_than",
+              "greater_than_or_equals",
+              "less_than",
+              "less_than_or_equals",
+              "substring",
+              "and",
+              "or",
+              "starts_with",
+              "not_starts_with"
+            ],
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded. The response body contains the collection of requested invoices.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Invoice"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/invoices/summary": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Retrieves the reseller's current account balance.",
+        "operationId": "Get /v1/invoices/summary",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the invoice summary.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/invoices/summaries": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Retrieves the reseller's current account balance per currency.",
+        "operationId": "Get /v1/invoices/summaries",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the collection of invoice summary per currency.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/invoices/{invoice_id}": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Gets the invoice by identifier for the partner.",
+        "operationId": "Get /v1/invoices/{invoice_id}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "invoice_id",
+            "in": "path",
+            "required": true,
+            "description": "The invoice identifier."
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the requested invoice.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Invoice"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/invoices/{invoice_id}/lineitems/{product_type}/{invoice_line_item_type}": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Gets invoice line items for a specific invoice by product and detail type.",
+        "operationId": "Get /v1/invoices/{invoice_id}/lineitems/{product_type}/{invoice_line_item_type}?seekOperation={seekOperation_value}&size={size_value}&offset={offset_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "invoice_id",
+            "in": "path",
+            "required": true,
+            "description": "The invoice identifier."
+          },
+          {
+            "type": "integer",
+            "name": "product_type",
+            "in": "path",
+            "required": true,
+            "enum": [
+              "none",
+              "office",
+              "azure",
+              "azure_data_market",
+              "one_time"
+            ],
+            "description": "The product type.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "invoice_line_item_type",
+            "in": "path",
+            "required": true,
+            "enum": [
+              "none",
+              "usage_line_items",
+              "billing_line_items"
+            ],
+            "description": "The invoice line item type.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "seekOperation",
+            "in": "query",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "description": "The seek operation to perform. Next is only supported.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "in": "query",
+            "description": "The page size.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "offset",
+            "in": "query",
+            "description": "The page offset.",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the requested invoice line items.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Collections.PagedResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.InvoiceLineItem]"
+            }
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    },
+    "/v1/invoices/{invoice_id}/documents/statement": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "summary": "Gets the invoice statement as a PDF file.",
+        "operationId": "Get /v1/invoices/{invoice_id}/documents/statement",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "invoice_id",
+            "in": "path",
+            "required": true,
+            "description": "The invoice identifier."
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The response body contains the the invoice statement in PDF format."
+          },
+          "400": {
+            "description": "There was a missing or an invalid input. The response body will provide the error details."
+          },
+          "401": {
+            "description": "The request was not authenticated. The client needs to authenticate with the partner API service first."
+          },
+          "403": {
+            "description": "The request was authenticated but was refused since the caller does not have the rights to invoke it."
+          },
+          "404": {
+            "description": "The resource is not found or not available with the given input parameters."
+          },
+          "500": {
+            "description": "The partner API service or one of its dependencies failed to fulfill the request. Callers may retry this."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Microsoft.Partner.Services.Billing.V1.Models.ServiceCostsSummary": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Billing.V1.Models.ServiceCostsSummary",
+      "properties": {
+        "billingStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "billingEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "pretaxTotal": {
+          "type": "number",
+          "format": "double"
+        },
+        "tax": {
+          "type": "number",
+          "format": "double"
+        },
+        "afterTaxTotal": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "currencySymbol": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceLinks",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceAttributes": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceAttributes",
+      "properties": {
+        "etag": {
+          "type": "string"
+        },
+        "objectType": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.Link": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.Link",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "method": {
+          "type": "string",
+          "readOnly": true
+        },
+        "body": {
+          "type": "string",
+          "readOnly": true
+        },
+        "headers": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[System.String,System.String]"
+          }
+        }
+      }
+    },
+    "System.Collections.Generic.KeyValuePair[System.String,System.String]": {
+      "type": "object",
+      "x-typeName": "System.Collections.Generic.KeyValuePair[System.String,System.String]",
+      "properties": {
+        "key": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Collections.ResourceCollection[Microsoft.Partner.Services.Billing.V1.Models.ServiceCostLineItem]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Collections.ResourceCollection[Microsoft.Partner.Services.Billing.V1.Models.ServiceCostLineItem]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Billing.V1.Models.ServiceCostLineItem"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Billing.V1.Models.ServiceCostLineItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Billing.V1.Models.ServiceCostLineItem",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "subscriptionFriendlyName": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "orderId": {
+          "type": "string"
+        },
+        "offerId": {
+          "type": "string"
+        },
+        "offerName": {
+          "type": "string"
+        },
+        "resellerMPNId": {
+          "type": "string"
+        },
+        "chargeType": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number",
+          "format": "double"
+        },
+        "unitPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "pretaxTotal": {
+          "type": "number",
+          "format": "double"
+        },
+        "tax": {
+          "type": "number",
+          "format": "double"
+        },
+        "afterTaxTotal": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "currencySymbol": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "customerName": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes",
+      "properties": {
+        "etag": {
+          "type": "string"
+        },
+        "objectType": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Common.Link": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Common.Link",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "method": {
+          "type": "string",
+          "readOnly": true
+        },
+        "headers": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[System.String,System.String]"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Query.Filters.FieldFilter": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Query.Filters.FieldFilter",
+      "properties": {
+        "operator": {
+          "type": "integer",
+          "enum": [
+            "equals",
+            "not_equals",
+            "greater_than",
+            "greater_than_or_equals",
+            "less_than",
+            "less_than_or_equals",
+            "substring",
+            "and",
+            "or",
+            "starts_with",
+            "not_starts_with"
+          ],
+          "format": "int32"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Collections.PagedResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.Invoice]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Collections.PagedResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.Invoice]",
+      "properties": {
+        "continuationToken": {
+          "type": "string"
+        },
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Invoice"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Invoice": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Invoice",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invoiceDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "totalCharges": {
+          "type": "number",
+          "format": "double"
+        },
+        "paidAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "currencySymbol": {
+          "type": "string",
+          "readOnly": true
+        },
+        "pdfDownloadLink": {
+          "type": "string"
+        },
+        "invoiceDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.InvoiceDetail"
+          }
+        },
+        "amendments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Invoice"
+          }
+        },
+        "documentType": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "invoice",
+            "void_note",
+            "adjustment_note"
+          ],
+          "format": "int32"
+        },
+        "amendsOf": {
+          "type": "string"
+        },
+        "invoiceType": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.InvoiceDetail": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.InvoiceDetail",
+      "properties": {
+        "invoiceLineItemType": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "usage_line_items",
+            "billing_line_items"
+          ],
+          "format": "int32"
+        },
+        "billingProvider": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "office",
+            "azure",
+            "azure_data_market",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Collections.PagedResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.InvoiceLineItem]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Collections.PagedResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.InvoiceLineItem]",
+      "properties": {
+        "continuationToken": {
+          "type": "string"
+        },
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.InvoiceLineItem"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.InvoiceLineItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.InvoiceLineItem",
+      "properties": {
+        "invoiceLineItemType": {
+          "type": "integer",
+          "readOnly": true,
+          "enum": [
+            "none",
+            "usage_line_items",
+            "billing_line_items"
+          ],
+          "format": "int32"
+        },
+        "billingProvider": {
+          "type": "integer",
+          "readOnly": true,
+          "enum": [
+            "none",
+            "office",
+            "azure",
+            "azure_data_market",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary",
+      "properties": {
+        "balanceAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "currencySymbol": {
+          "type": "string",
+          "readOnly": true
+        },
+        "accountingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "firstInvoiceCreationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastPaymentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastPaymentAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "latestInvoiceDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummaryDetail"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummaryDetail": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummaryDetail",
+      "properties": {
+        "invoiceType": {
+          "type": "string"
+        },
+        "summary": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary"
+        }
+      }
+    },
+    "Microsoft.Partner.Sdk.Contracts.V1.Collections.ResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Sdk.Contracts.V1.Collections.ResourceCollection[Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.InvoiceSummary"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Sdk.Contracts.V1.Common.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.ServiceFabric.WebApi.Modals.PingResponse": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Modals.PingResponse",
+      "properties": {
+        "webApiContext": {
+          "$ref": "#/definitions/Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext"
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext",
+      "properties": {
+        "servicePath": {
+          "type": "string",
+          "readOnly": true
+        },
+        "appVersion": {
+          "type": "string",
+          "readOnly": true
+        },
+        "serviceFabricPort": {
+          "type": "string",
+          "readOnly": true
+        },
+        "reverseProxyUrl": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  },
+  "responses": {},
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "description": "Authorization Bearer token",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "ms-correlationid": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request",
+      "name": "ms-correlationid",
+      "in": "header"
+    },
+    "ms-cv": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request",
+      "name": "ms-cv",
+      "in": "header"
+    },
+    "ms-requestid": {
+      "type": "apiKey",
+      "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request",
+      "name": "ms-requestid",
+      "in": "header"
+    }
+  }
+}

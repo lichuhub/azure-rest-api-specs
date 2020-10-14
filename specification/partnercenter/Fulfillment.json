@@ -1,0 +1,472 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "FulfillmentService",
+    "description": "APIs for Cloud Solution Provider partners that manage entitlements and its artifacts.",
+    "version": "v1"
+  },
+  "host": "api.partnercenter.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/V1/customers/{customer_id}/entitlements": {
+      "get": {
+        "tags": [
+          "Entitlement"
+        ],
+        "operationId": "Get /V1/customers/{customer_id}/entitlements?entitlementtype={entitlementtype_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "entitlementtype",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded. The response body contains entitlements.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Entitlement.V1.Models.Entitlement]"
+            }
+          }
+        }
+      }
+    },
+    "/V1/customers/{customer_id}/artifacts/virtualmachinereservedinstance/groups/{group_Id}/lineItems/{lineitem_id}/resource/{resource_id}": {
+      "get": {
+        "tags": [
+          "Entitlement"
+        ],
+        "operationId": "Get /V1/customers/{customer_id}/artifacts/virtualmachinereservedinstance/groups/{group_Id}/lineItems/{lineitem_id}/resource/{resource_id}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "group_Id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "lineitem_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "resource_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded. The response body contains entitlements.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/V1/customers/{customer_id}/artifacts/productkey/groups/{group_Id}/lineItems/{lineitem_id}/items/{item_id}": {
+      "get": {
+        "tags": [
+          "Entitlement"
+        ],
+        "operationId": "Get /V1/customers/{customer_id}/artifacts/productkey/groups/{group_Id}/lineItems/{lineitem_id}/items/{item_id}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customer_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "group_Id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "lineitem_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "item_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded. The response body contains entitlements.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Entitlement.V1.Models.Entitlement]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Entitlement.V1.Models.Entitlement]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Entitlement.V1.Models.Entitlement"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Entitlement.V1.Models.Entitlement": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Entitlement.V1.Models.Entitlement",
+      "properties": {
+        "includedEntitlements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Entitlement.V1.Models.Entitlement"
+          }
+        },
+        "referenceOrder": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Entitlement.V1.Models.ReferenceOrder"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quantityDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Entitlement.V1.Models.QuantityDetail"
+          }
+        },
+        "entitledArtifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Entitlement.V1.Models.Artifact"
+          }
+        },
+        "skuId": {
+          "type": "string"
+        },
+        "entitlementType": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "virtual_machine_reserved_instance",
+            "software"
+          ],
+          "format": "int32"
+        },
+        "minEventDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceLinks",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceAttributes": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceAttributes",
+      "properties": {
+        "etag": {
+          "type": "string"
+        },
+        "objectType": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Entitlement.V1.Models.ReferenceOrder": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Entitlement.V1.Models.ReferenceOrder",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "lineItemId": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Entitlement.V1.Models.QuantityDetail": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Entitlement.V1.Models.QuantityDetail",
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Entitlement.V1.Models.Artifact": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Entitlement.V1.Models.Artifact",
+      "properties": {
+        "artifactType": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "virtual_machine_reserved_instance",
+            "product_key"
+          ],
+          "format": "int32"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.Link": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.Link",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "method": {
+          "type": "string",
+          "readOnly": true
+        },
+        "body": {
+          "type": "string",
+          "readOnly": true
+        },
+        "headers": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[System.String,System.String]"
+          }
+        }
+      }
+    },
+    "System.Collections.Generic.KeyValuePair[System.String,System.String]": {
+      "type": "object",
+      "x-typeName": "System.Collections.Generic.KeyValuePair[System.String,System.String]",
+      "properties": {
+        "key": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Microsoft.Partner.ServiceFabric.WebApi.Modals.PingResponse": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Modals.PingResponse",
+      "properties": {
+        "webApiContext": {
+          "$ref": "#/definitions/Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext"
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext",
+      "properties": {
+        "servicePath": {
+          "type": "string",
+          "readOnly": true
+        },
+        "appVersion": {
+          "type": "string",
+          "readOnly": true
+        },
+        "serviceFabricPort": {
+          "type": "string",
+          "readOnly": true
+        },
+        "reverseProxyUrl": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  },
+  "responses": {},
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "description": "Authorization Bearer token",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "ms-correlationid": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request",
+      "name": "ms-correlationid",
+      "in": "header"
+    },
+    "ms-cv": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request",
+      "name": "ms-cv",
+      "in": "header"
+    },
+    "ms-requestid": {
+      "type": "apiKey",
+      "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request",
+      "name": "ms-requestid",
+      "in": "header"
+    }
+  }
+}

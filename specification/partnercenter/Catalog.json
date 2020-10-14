@@ -1,0 +1,2954 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "GTMCatalogService",
+    "description": "APIs for Cloud Solution Provider partners accessing catalog data",
+    "version": "v1"
+  },
+  "host": "api.partnercenter.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v{version}/products/{productId}/skus/{skuId}/availabilities": {
+      "get": {
+        "tags": [
+          "Availability"
+        ],
+        "summary": "Retrieves all availabilities for the requested context.",
+        "operationId": "Get /v{version}/products/{productId}/skus/{skuId}/availabilities?country={country_value}&targetSegment={targetSegment_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product Id."
+          },
+          {
+            "type": "string",
+            "name": "skuId",
+            "in": "path",
+            "required": true,
+            "description": "The sku Id."
+          },
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "targetSegment",
+            "in": "query",
+            "description": "The optional segment filter."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The availabilities are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Availability]"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customerId}/products/{productId}/skus/{skuId}/availabilities": {
+      "get": {
+        "tags": [
+          "Availability"
+        ],
+        "summary": "Retrieves all availabilities for the requested context.",
+        "operationId": "Get /v{version}/customers/{customerId}/products/{productId}/skus/{skuId}/availabilities?targetSegment={targetSegment_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "description": "The customer id."
+          },
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product Id."
+          },
+          {
+            "type": "string",
+            "name": "skuId",
+            "in": "path",
+            "required": true,
+            "description": "The sku Id."
+          },
+          {
+            "type": "string",
+            "name": "targetSegment",
+            "in": "query",
+            "description": "The optional segment filter."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The availabilities are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Availability]"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/products/{productId}/skus/{skuId}/availabilities/{availabilityId}": {
+      "get": {
+        "tags": [
+          "Availability"
+        ],
+        "summary": "Retrieves an availability for the requested context.",
+        "operationId": "Get /v{version}/products/{productId}/skus/{skuId}/availabilities/{availabilityId}?country={country_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product Id."
+          },
+          {
+            "type": "string",
+            "name": "skuId",
+            "in": "path",
+            "required": true,
+            "description": "The sku Id."
+          },
+          {
+            "type": "string",
+            "name": "availabilityId",
+            "in": "path",
+            "required": true,
+            "description": "The availability id."
+          },
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The availability is returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Availability"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/products/{productId}/skus/{skuId}/pricing": {
+      "get": {
+        "tags": [
+          "Availability"
+        ],
+        "summary": "Retrieves an availability's pricing for the requested context.",
+        "operationId": "Get /v{version}/products/{productId}/skus/{skuId}/pricing?country={country_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product Id."
+          },
+          {
+            "type": "string",
+            "name": "skuId",
+            "in": "path",
+            "required": true,
+            "description": "The sku Id."
+          },
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The SKU pricing is returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Pricing.V1.Models.Pricing"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customerId}/products/{productId}/skus/{skuId}/availabilities/{availabilityId}": {
+      "get": {
+        "tags": [
+          "Availability"
+        ],
+        "summary": "Retrieves an availability for the requested customer context.",
+        "operationId": "Get /v{version}/customers/{customerId}/products/{productId}/skus/{skuId}/availabilities/{availabilityId}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "description": "The customer id."
+          },
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product Id."
+          },
+          {
+            "type": "string",
+            "name": "skuId",
+            "in": "path",
+            "required": true,
+            "description": "The sku Id."
+          },
+          {
+            "type": "string",
+            "name": "availabilityId",
+            "in": "path",
+            "required": true,
+            "description": "The availability id."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The availability is returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Availability"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Retrieves all products using country and locale information.",
+        "operationId": "Get /v{version}/products?country={country_value}&targetView={targetView_value}&targetSegment={targetSegment_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "targetView",
+            "in": "query",
+            "description": "The catalog view being requested."
+          },
+          {
+            "type": "string",
+            "name": "targetSegment",
+            "in": "query",
+            "description": "The optional segment filter."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The products are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Product]"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/products/{product_id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Retrieves a product by its identifier using country and locale information.",
+        "operationId": "Get /v{version}/products/{product_id}?country={country_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "product_id",
+            "in": "path",
+            "required": true,
+            "description": "The product identifier."
+          },
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The requested products are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Product"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customerId}/products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Retrieves all products using country and locale information.",
+        "operationId": "Get /v{version}/customers/{customerId}/products?targetView={targetView_value}&targetSegment={targetSegment_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "description": "The customer id."
+          },
+          {
+            "type": "string",
+            "name": "targetView",
+            "in": "query",
+            "description": "The catalog view being requested."
+          },
+          {
+            "type": "string",
+            "name": "targetSegment",
+            "in": "query",
+            "description": "The optional segment filter."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The products are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Product]"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customerId}/products/{product_id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Retrieves a product by its identifier using country and locale information.",
+        "operationId": "Get /v{version}/customers/{customerId}/products/{product_id}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "product_id",
+            "in": "path",
+            "required": true,
+            "description": "The product identifier."
+          },
+          {
+            "type": "string",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "description": "The customer id."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The requested products are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Product"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/extensions/product/checkinventory": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Retrieves inventory validation results for the provided country.",
+        "operationId": "Post /v{version}/extensions/product/checkinventory?country={country_value}",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "inventoryCheckRequest",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.InventoryCheckRequest"
+            },
+            "description": "The inventory check request."
+          },
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The inventory results are returned in the response body.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.InventoryItem"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/products/{productId}/skus": {
+      "get": {
+        "tags": [
+          "Sku"
+        ],
+        "summary": "Retrieves all skus for the given product id.",
+        "operationId": "Get /v{version}/products/{productId}/skus?country={country_value}&targetSegment={targetSegment_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product id."
+          },
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "targetSegment",
+            "in": "query",
+            "description": "The optional segment filter."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The skus are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Sku]"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/products/{productId}/skus/{skuId}": {
+      "get": {
+        "tags": [
+          "Sku"
+        ],
+        "summary": "Retrieves the sku for the given product id and sku id.",
+        "operationId": "Get /v{version}/products/{productId}/skus/{skuId}?country={country_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product id."
+          },
+          {
+            "type": "string",
+            "name": "skuId",
+            "in": "path",
+            "required": true,
+            "description": "The sku id."
+          },
+          {
+            "type": "string",
+            "name": "country",
+            "in": "query",
+            "description": "The country information. Two letter representation of country"
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The sku is returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Sku"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customerId}/products/{productId}/skus": {
+      "get": {
+        "tags": [
+          "Sku"
+        ],
+        "summary": "Retrieves all skus for the given product id.",
+        "operationId": "Get /v{version}/customers/{customerId}/products/{productId}/skus?targetSegment={targetSegment_value}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "description": "The customer id"
+          },
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product id."
+          },
+          {
+            "type": "string",
+            "name": "targetSegment",
+            "in": "query",
+            "description": "The optional segment filter."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The skus are returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Sku]"
+            }
+          }
+        }
+      }
+    },
+    "/v{version}/customers/{customerId}/products/{productId}/skus/{skuId}": {
+      "get": {
+        "tags": [
+          "Sku"
+        ],
+        "summary": "Retrieves the sku for the given product id and sku id.",
+        "operationId": "Get /v{version}/customers/{customerId}/products/{productId}/skus/{skuId}",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "description": "The customer id"
+          },
+          {
+            "type": "string",
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product id."
+          },
+          {
+            "type": "string",
+            "name": "skuId",
+            "in": "path",
+            "required": true,
+            "description": "The sku id."
+          },
+          {
+            "type": "string",
+            "name": "version",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Authorization Bearer token",
+            "default": "Bearer "
+          },
+          {
+            "type": "string",
+            "name": "ms-correlationid",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-cv",
+            "in": "header",
+            "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request"
+          },
+          {
+            "type": "string",
+            "name": "ms-requestid",
+            "in": "header",
+            "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful. The sku is returned in the response body.",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Sku"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Availability]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Availability]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Availability"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.Availability": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.Availability",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "skuId": {
+          "type": "string"
+        },
+        "catalogItemId": {
+          "type": "string"
+        },
+        "defaultCurrency": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Pricing.V1.Models.CurrencyInfo"
+        },
+        "segment": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "isPurchasable": {
+          "type": "boolean"
+        },
+        "isRenewable": {
+          "type": "boolean"
+        },
+        "terms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.AvailabilityTerm"
+          }
+        },
+        "includedQuantityOptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.AvailabilityIncludedQuantity"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.AvailabilityLinks"
+        },
+        "product": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Product"
+        },
+        "sku": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Sku"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceLinks",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceAttributes": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceAttributes",
+      "properties": {
+        "etag": {
+          "type": "string"
+        },
+        "objectType": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Pricing.V1.Models.CurrencyInfo": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Pricing.V1.Models.CurrencyInfo",
+      "properties": {
+        "code": {
+          "type": "string",
+          "readOnly": true
+        },
+        "symbol": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.AvailabilityTerm": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.AvailabilityTerm",
+      "properties": {
+        "duration": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "renewalOptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.RenewalOption"
+          }
+        },
+        "cancellationPolicies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.CancellationPolicy"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.AvailabilityIncludedQuantity": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.AvailabilityIncludedQuantity",
+      "properties": {
+        "units": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.AvailabilityLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.AvailabilityLinks",
+      "properties": {
+        "pricing": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.Product": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.Product",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "productType": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.ItemType"
+        },
+        "isMicrosoftProduct": {
+          "type": "boolean"
+        },
+        "publisherName": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.ProductLinks"
+        },
+        "localizedAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[System.String,System.String]"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.Sku": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.Sku",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "minimumQuantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumQuantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isTrial": {
+          "type": "boolean"
+        },
+        "supportedBillingCycles": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "enum": [
+              "unknown",
+              "monthly",
+              "annual",
+              "none",
+              "one_time"
+            ],
+            "format": "int32"
+          }
+        },
+        "purchasePrerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inventoryVariables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provisioningVariables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dynamicAttributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.Link": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.Link",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "method": {
+          "type": "string",
+          "readOnly": true
+        },
+        "body": {
+          "type": "string",
+          "readOnly": true
+        },
+        "headers": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[System.String,System.String]"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.RenewalOption": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.RenewalOption",
+      "properties": {
+        "termDuration": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.CancellationPolicy": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.CancellationPolicy",
+      "properties": {
+        "refundOptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.CancellationRefundOption"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.ItemType": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.ItemType",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "subType": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.ItemType"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.ProductLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.ProductLinks",
+      "properties": {
+        "skus": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "System.Collections.Generic.KeyValuePair[System.String,System.String]": {
+      "type": "object",
+      "x-typeName": "System.Collections.Generic.KeyValuePair[System.String,System.String]",
+      "properties": {
+        "key": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.CancellationRefundOption": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.CancellationRefundOption",
+      "properties": {
+        "sequenceId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "expiresAfter": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Pricing.V1.Models.Pricing": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Pricing.V1.Models.Pricing",
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "skuId": {
+          "type": "string"
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Pricing.V1.Models.Price"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Pricing.V1.Models.Price": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Pricing.V1.Models.Price",
+      "properties": {
+        "availabilityId": {
+          "type": "string"
+        },
+        "currency": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Pricing.V1.Models.CurrencyInfo"
+        },
+        "listPrice": {
+          "type": "string"
+        },
+        "msrp": {
+          "type": "string"
+        },
+        "term": {
+          "type": "string"
+        },
+        "meter": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Pricing.V1.Models.Meter"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Pricing.V1.Models.Meter": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Pricing.V1.Models.Meter",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.PurchasedAvailabilityIdentifier": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.PurchasedAvailabilityIdentifier",
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "skuId": {
+          "type": "string"
+        },
+        "availabilityId": {
+          "type": "string"
+        },
+        "termId": {
+          "type": "string"
+        },
+        "termDuration": {
+          "type": "string"
+        },
+        "shouldReturnEquivalentAvailability": {
+          "type": "boolean"
+        },
+        "renewsTo": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.RenewsTo"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.RenewsTo": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.RenewsTo",
+      "properties": {
+        "termDuration": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.PurchasedAvailability": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.PurchasedAvailability",
+      "properties": {
+        "identifier": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.PurchasedAvailabilityIdentifier"
+        },
+        "availability": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Availability"
+        },
+        "billingCycle": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "monthly",
+            "annual",
+            "none",
+            "one_time"
+          ],
+          "format": "int32"
+        },
+        "termDuration": {
+          "type": "string"
+        },
+        "termId": {
+          "type": "string"
+        },
+        "renewalTermId": {
+          "type": "string"
+        },
+        "renewalTermDuration": {
+          "type": "string"
+        },
+        "is3ppAgencyProduct": {
+          "type": "boolean"
+        },
+        "fulfillBeforeChargeEligible": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.Cart": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.Cart",
+      "properties": {
+        "market": {
+          "type": "string"
+        },
+        "nationalCloud": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartItem"
+          }
+        },
+        "purchasedProducts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.PurchasedProduct"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Carts.V1.Models.CartItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Carts.V1.Models.CartItem",
+      "properties": {
+        "catalogItemId": {
+          "type": "string"
+        },
+        "lineItemNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "billingCycle": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "termDuration": {
+          "type": "string"
+        },
+        "renewsTo": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.RenewsTo"
+        },
+        "provisioningContext": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "orderGroupId": {
+          "type": "string"
+        },
+        "targetId": {
+          "type": "string"
+        },
+        "audienceClaimHeader": {
+          "type": "string"
+        },
+        "audience": {
+          "type": "string"
+        },
+        "agreementType": {
+          "type": "string"
+        },
+        "catalogClaims": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "purchaseSystem": {
+          "type": "integer",
+          "enum": [
+            "unknown",
+            "oms",
+            "mcapi",
+            "mcapi2"
+          ],
+          "format": "int32"
+        },
+        "product": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Product"
+        },
+        "sku": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Sku"
+        },
+        "availability": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Availability"
+        },
+        "termId": {
+          "type": "string"
+        },
+        "fulfillBeforePurchase": {
+          "type": "boolean"
+        },
+        "addonItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Carts.V1.Models.CartItem"
+          }
+        },
+        "testHeaders": {
+          "type": "string"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.PurchasedProduct": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.PurchasedProduct",
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "friendlyName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.CatalogViews.V1.Models.CatalogView]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.CatalogViews.V1.Models.CatalogView]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.CatalogViews.V1.Models.CatalogView"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.CatalogViews.V1.Models.CatalogView": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.CatalogViews.V1.Models.CatalogView",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "includedViews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.CatalogViews.V1.Models.CatalogView"
+          }
+        },
+        "filterOptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.CatalogViews.V1.Models.FilterOption"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.CatalogViews.V1.Models.FilterOption": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.CatalogViews.V1.Models.FilterOption",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "isRequired": {
+          "type": "boolean"
+        },
+        "allowedValues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.GalleryResourceCollection[Microsoft.Partner.Services.Gallery.V1.Models.Product]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.GalleryResourceCollection[Microsoft.Partner.Services.Gallery.V1.Models.Product]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.Gallery.V1.Models.GalleryResourceLinks"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Gallery.V1.Models.Product"
+          }
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.GalleryResourceLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.GalleryResourceLinks",
+      "properties": {
+        "last": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.Product": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.Product",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "offerType": {
+          "type": "string"
+        },
+        "isPrivate": {
+          "type": "boolean"
+        },
+        "gtmMaterialsUrl": {
+          "type": "string"
+        },
+        "categoryIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publisherDisplayName": {
+          "type": "string"
+        },
+        "bigId": {
+          "type": "string"
+        },
+        "skuItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Gallery.V1.Models.Sku"
+          }
+        },
+        "contactInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Gallery.V1.Models.ContactInfo"
+          }
+        },
+        "privacyPolicyUri": {
+          "type": "string"
+        },
+        "legalTermsUri": {
+          "type": "string"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Gallery.V1.Models.Images"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Gallery.V1.Models.GalleryLink"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.Sku": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.Sku",
+      "properties": {
+        "skuId": {
+          "type": "string"
+        },
+        "skuTitle": {
+          "type": "string"
+        },
+        "skuDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.ContactInfo": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.ContactInfo",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.Images": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.Images",
+      "properties": {
+        "context": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Gallery.V1.Models.ImageItem"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.GalleryLink": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.GalleryLink",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "uri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "method": {
+          "type": "string",
+          "readOnly": true
+        },
+        "body": {
+          "type": "string",
+          "readOnly": true
+        },
+        "headers": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/System.Collections.Generic.KeyValuePair[System.String,System.String]"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Gallery.V1.Models.ImageItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Gallery.V1.Models.ImageItem",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferCategory]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferCategory]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferCategory"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferCategory": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferCategory",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.Offer]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.Offer]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.Offer"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.Offer": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.Offer",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "providerId": {
+          "type": "string"
+        },
+        "providerName": {
+          "type": "string"
+        },
+        "providerLocationId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "minimumQuantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumQuantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferCategory"
+        },
+        "prerequisiteOffers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isAddOn": {
+          "type": "boolean"
+        },
+        "hasAddOns": {
+          "type": "boolean"
+        },
+        "isAvailableForPurchase": {
+          "type": "boolean"
+        },
+        "billing": {
+          "type": "integer",
+          "enum": [
+            "none",
+            "usage",
+            "license"
+          ],
+          "format": "int32"
+        },
+        "supportedBillingCycles": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "enum": [
+              "unknown",
+              "monthly",
+              "annual",
+              "none"
+            ],
+            "format": "int32"
+          }
+        },
+        "isAutoRenewable": {
+          "type": "boolean"
+        },
+        "isInternal": {
+          "type": "boolean"
+        },
+        "isTrial": {
+          "type": "boolean"
+        },
+        "upgradeTargetOffers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "conversionTargetOffers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reselleeQualifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resellerQualifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "salesGroupId": {
+          "type": "string"
+        },
+        "orderService": {
+          "type": "string"
+        },
+        "acquisitionType": {
+          "type": "integer",
+          "enum": [
+            "purchase",
+            "referral"
+          ],
+          "format": "int32"
+        },
+        "supportedCatalogTypes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "enum": [
+              "sandbox",
+              "live"
+            ],
+            "format": "int32"
+          }
+        },
+        "product": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferProduct"
+        },
+        "unitType": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferLinks"
+        },
+        "isMicrosoftProduct": {
+          "type": "boolean"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "limitUnitOfMeasure": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "termUnitOfMeasure": {
+          "type": "string"
+        },
+        "term": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferProduct": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferProduct",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferLinks": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.OfferLinks",
+      "properties": {
+        "learnMore": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "self": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "next": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        },
+        "previous": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    },
+    "Microsoft.Partner.ServiceFabric.WebApi.Modals.PingResponse": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Modals.PingResponse",
+      "properties": {
+        "webApiContext": {
+          "$ref": "#/definitions/Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext"
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.ServiceFabric.WebApi.Configuration.IWebApiContext",
+      "properties": {
+        "servicePath": {
+          "type": "string",
+          "readOnly": true
+        },
+        "appVersion": {
+          "type": "string",
+          "readOnly": true
+        },
+        "serviceFabricPort": {
+          "type": "string",
+          "readOnly": true
+        },
+        "reverseProxyUrl": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Product]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Product]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Product"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.InventoryCheckRequest": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.InventoryCheckRequest",
+      "properties": {
+        "targetItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.InventoryItem"
+          }
+        },
+        "inventoryContext": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.InventoryItem": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.InventoryItem",
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "skuId": {
+          "type": "string"
+        },
+        "isRestricted": {
+          "type": "boolean"
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.InventoryRestriction"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.InventoryRestriction": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.InventoryRestriction",
+      "properties": {
+        "reasonCode": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSku]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSku]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSku"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSku": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSku",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "programCode": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "provisioningUri": {
+          "type": "string"
+        },
+        "licenseClaimType": {
+          "type": "integer",
+          "enum": [
+            "manual_only",
+            "automatic_only",
+            "automatic_or_manual"
+          ],
+          "format": "int32"
+        },
+        "productSource": {
+          "type": "integer",
+          "enum": [
+            "aad",
+            "sfb"
+          ],
+          "format": "int32"
+        },
+        "licenseGroupId": {
+          "type": "integer",
+          "enum": [
+            "group1",
+            "group2",
+            "group3"
+          ],
+          "format": "int32"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSkuSupportContact]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSkuSupportContact]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSkuSupportContact"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSkuSupportContact": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.ProductSkuSupportContact",
+      "properties": {
+        "productSkuId": {
+          "type": "string"
+        },
+        "supportTenantIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Promotions.V1.Models.Promotion]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Promotions.V1.Models.Promotion]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Promotions.V1.Models.Promotion"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Promotions.V1.Models.Promotion": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Promotions.V1.Models.Promotion",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "offerIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "countries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "discountType": {
+          "type": "string"
+        },
+        "discountValue": {
+          "type": "number",
+          "format": "double"
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "durationUnitOfMeasure": {
+          "type": "integer",
+          "enum": [
+            "other",
+            "day",
+            "month",
+            "year"
+          ],
+          "format": "int32"
+        },
+        "partnerCommerceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Promotions.V1.Models.PromotionCode]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Promotions.V1.Models.PromotionCode]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Promotions.V1.Models.PromotionCode"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Promotions.V1.Models.PromotionCode": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Promotions.V1.Models.PromotionCode",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "promotionId": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "isEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ServicePlan]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ServicePlan]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.ServicePlan"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.ServicePlan": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.ServicePlan",
+      "properties": {
+        "serviceTypeName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "dependsOn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prohibitedCountries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "restrictedCountries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sku": {
+          "type": "string"
+        },
+        "recipientType": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ServiceType]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.HybridCatalog.V1.Models.ServiceType]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.HybridCatalog.V1.Models.ServiceType"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.HybridCatalog.V1.Models.ServiceType": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.HybridCatalog.V1.Models.ServiceType",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "adminServiceLinkFormat": {
+          "type": "string"
+        },
+        "serviceHealthLinkFormat": {
+          "type": "string"
+        },
+        "serviceTicketLinkFormat": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Sku]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.Sku]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.Sku"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.SkuDownloadOption]": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Core.Collections.ResourceCollection[Microsoft.Partner.Services.Products.V2.Models.SkuDownloadOption]",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "readOnly": true,
+          "format": "int32"
+        },
+        "items": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/Microsoft.Partner.Services.Products.V2.Models.SkuDownloadOption"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceLinks"
+        },
+        "attributes": {
+          "readOnly": true,
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.ResourceAttributes"
+        }
+      }
+    },
+    "Microsoft.Partner.Services.Products.V2.Models.SkuDownloadOption": {
+      "type": "object",
+      "x-typeName": "Microsoft.Partner.Services.Products.V2.Models.SkuDownloadOption",
+      "properties": {
+        "optionKey": {
+          "type": "string"
+        },
+        "optionTitle": {
+          "type": "string"
+        },
+        "displayRank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cpUandFileType": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
+        },
+        "languageName": {
+          "type": "string"
+        },
+        "fileSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "downloadLink": {
+          "$ref": "#/definitions/Microsoft.Partner.Core.Collections.Link"
+        }
+      }
+    }
+  },
+  "responses": {},
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "description": "Authorization Bearer token",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "ms-correlationid": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-correlationid is not provided, the server will generate a new one for each request",
+      "name": "ms-correlationid",
+      "in": "header"
+    },
+    "ms-cv": {
+      "type": "apiKey",
+      "description": "Used for tracking requests internally. If a ms-cv is not provided, the server will generate a new one for each request",
+      "name": "ms-cv",
+      "in": "header"
+    },
+    "ms-requestid": {
+      "type": "apiKey",
+      "description": "Used for idempotency of requests. If a ms-requestid is not provided, the server will generate a new one for each request",
+      "name": "ms-requestid",
+      "in": "header"
+    }
+  }
+}
